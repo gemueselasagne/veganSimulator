@@ -10,6 +10,7 @@ import {
   Legend,
 } from 'recharts';
 import useSimulationStore from '../../store/useSimulationStore';
+import { SIMULATION } from '../../simulation/constants';
 import './TimelineGraph.css';
 
 const INDICATOR_CONFIG = {
@@ -46,11 +47,9 @@ const TimelineGraph = () => {
   const { history } = useSimulationStore();
   const [selectedIndicators, setSelectedIndicators] = useState(['co2', 'biodiversity', 'population']);
   
-  // Prepare chart data
+  // Prepare chart data - use full history to keep start year visible
   const chartData = useMemo(() => {
-    // Only show last 100 data points for performance
-    const slicedHistory = history.slice(-100);
-    return slicedHistory.map((entry) => ({
+    return history.map((entry) => ({
       year: entry.year,
       ...Object.keys(INDICATOR_CONFIG).reduce((acc, key) => {
         acc[key] = entry[key];
@@ -110,6 +109,7 @@ const TimelineGraph = () => {
               tick={{ fontSize: 8, fontFamily: 'Press Start 2P' }}
               tickLine={{ stroke: 'var(--border-color)' }}
               interval="preserveStartEnd"
+              domain={[SIMULATION.startYear, 'dataMax']}
             />
             <YAxis 
               stroke="var(--text-muted)"
