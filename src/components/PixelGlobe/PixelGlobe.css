@@ -1,0 +1,231 @@
+/* ===== PIXEL GLOBE COMPONENT ===== */
+
+.pixel-globe {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.pixel-globe__title-icon {
+  margin-right: var(--spacing-sm);
+}
+
+.pixel-globe__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-lg);
+  min-height: 300px;
+}
+
+/* === Atmosphere Glow === */
+.pixel-globe__atmosphere {
+  position: absolute;
+  width: 260px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+/* === Globe Frame === */
+.pixel-globe__frame {
+  position: relative;
+  width: 240px;
+  height: 180px;
+  border: 4px solid var(--border-color);
+  overflow: hidden;
+  background: var(--bg-secondary);
+  box-shadow: 
+    inset 0 0 30px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+.pixel-globe__frame--active {
+  border-color: var(--neon-cyan);
+  animation: framePulse 2s ease-in-out infinite;
+}
+
+@keyframes framePulse {
+  0%, 100% {
+    box-shadow: 
+      inset 0 0 30px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 
+      inset 0 0 30px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(0, 255, 255, 0.4);
+  }
+}
+
+/* === Water Background === */
+.pixel-globe__water {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: background-color 1s ease;
+}
+
+/* === Land Pixels === */
+.pixel-globe__land {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.pixel-globe__pixel {
+  position: absolute;
+  width: 2.5%;
+  height: 3.33%;
+  transition: background-color 1s ease;
+  image-rendering: pixelated;
+}
+
+/* === Floating Particles === */
+.pixel-globe__particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.pixel-globe__particle {
+  position: absolute;
+  background: var(--neon-green);
+  border-radius: 0;
+  opacity: 0.6;
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* === Grid Overlay === */
+.pixel-globe__grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 10% 10%;
+  pointer-events: none;
+}
+
+/* === Scanlines === */
+.pixel-globe__scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  animation: scanlineMove 10s linear infinite;
+}
+
+@keyframes scanlineMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100px;
+  }
+}
+
+/* === Stats Overlay === */
+.pixel-globe__stats {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--spacing-md);
+  background: rgba(10, 10, 15, 0.9);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid var(--border-color);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.stat-icon {
+  font-size: 12px;
+}
+
+.stat-value {
+  font-size: var(--font-xs);
+  color: var(--neon-cyan);
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Status Message === */
+.pixel-globe__message {
+  text-align: center;
+  font-size: var(--font-xs);
+  padding: var(--spacing-sm);
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+}
+
+.message--good {
+  color: var(--neon-green);
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+.message--warning {
+  color: var(--neon-yellow);
+  text-shadow: 0 0 5px var(--neon-yellow);
+}
+
+.message--danger {
+  color: var(--neon-red);
+  text-shadow: 0 0 5px var(--neon-red);
+  animation: blink 0.5s step-start infinite;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .pixel-globe__container {
+    min-height: 250px;
+    padding: var(--spacing-md);
+  }
+  
+  .pixel-globe__frame {
+    width: 200px;
+    height: 150px;
+  }
+  
+  .pixel-globe__atmosphere {
+    width: 220px;
+    height: 170px;
+  }
+}
+

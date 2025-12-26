@@ -1,0 +1,123 @@
+/* ===== YEAR DISPLAY COMPONENT ===== */
+
+.year-display {
+  background: var(--bg-panel);
+  border: 3px solid var(--border-color);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* === Main Year Display === */
+.year-display__main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.year-display__digits {
+  display: flex;
+  gap: 4px;
+}
+
+.year-display__digit {
+  font-size: var(--font-huge);
+  color: var(--neon-green);
+  text-shadow: 
+    0 0 10px var(--neon-green),
+    0 0 20px var(--neon-green),
+    0 0 30px rgba(57, 255, 20, 0.5);
+  background: var(--bg-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 2px solid var(--border-color);
+  min-width: 50px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.year-display__digits--active .year-display__digit {
+  animation: digitPulse 0.5s ease-in-out;
+}
+
+@keyframes digitPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    text-shadow: 
+      0 0 15px var(--neon-green),
+      0 0 30px var(--neon-green),
+      0 0 45px rgba(57, 255, 20, 0.7);
+  }
+}
+
+.year-display__label {
+  font-size: var(--font-sm);
+  color: var(--text-muted);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+/* === Progress Bar === */
+.year-display__progress {
+  width: 100%;
+  height: 12px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.year-display__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-green), var(--neon-cyan));
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.year-display__progress-segments {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 9%,
+    var(--bg-primary) 9%,
+    var(--bg-primary) 10%
+  );
+  pointer-events: none;
+}
+
+/* === Year Range === */
+.year-display__range {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.year-display__range-bar {
+  color: var(--border-color);
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .year-display__digit {
+    font-size: var(--font-xxl);
+    min-width: 35px;
+    padding: 4px 6px;
+  }
+}
+

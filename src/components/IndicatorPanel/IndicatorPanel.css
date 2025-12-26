@@ -1,0 +1,150 @@
+/* ===== INDICATOR PANEL COMPONENT ===== */
+
+.indicator-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.indicator-panel__title {
+  background: var(--bg-panel);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 3px solid var(--border-color);
+  margin: 0;
+}
+
+.indicator-panel__icon {
+  margin-right: var(--spacing-sm);
+}
+
+.indicator-panel__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* === Individual Indicator Card === */
+.indicator-card {
+  background: var(--bg-panel);
+  border: 2px solid var(--border-color);
+  padding: var(--spacing-sm);
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--spacing-xs) var(--spacing-sm);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-fast);
+}
+
+.indicator-card:hover {
+  border-color: var(--indicator-color, var(--neon-cyan));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--indicator-color, var(--neon-cyan)) 30%, transparent);
+}
+
+.indicator-card__icon {
+  grid-row: 1 / 3;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.indicator-card__value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-xs);
+}
+
+.value-number {
+  font-size: var(--font-md);
+  color: var(--indicator-color, var(--text-primary));
+  text-shadow: 0 0 5px var(--indicator-color, transparent);
+  font-variant-numeric: tabular-nums;
+}
+
+.value-unit {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+.indicator-card__label {
+  font-size: 7px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.indicator-card__trend {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: var(--font-xs);
+}
+
+.trend-icon {
+  font-size: 8px;
+}
+
+.trend-percent {
+  font-variant-numeric: tabular-nums;
+}
+
+.trend--good {
+  color: var(--neon-green);
+}
+
+.trend--good .trend-icon {
+  text-shadow: 0 0 5px var(--neon-green);
+}
+
+.trend--bad {
+  color: var(--neon-red);
+}
+
+.trend--bad .trend-icon {
+  text-shadow: 0 0 5px var(--neon-red);
+}
+
+.trend--stable {
+  color: var(--text-muted);
+}
+
+/* === Bottom Accent Bar === */
+.indicator-card__bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0.7;
+}
+
+/* === Animations === */
+@keyframes indicatorPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.indicator-card--changing .value-number {
+  animation: indicatorPulse 0.3s ease-in-out;
+}
+
+/* === Responsive === */
+@media (max-width: 1200px) {
+  .indicator-panel__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+

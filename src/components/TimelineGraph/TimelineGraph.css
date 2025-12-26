@@ -1,0 +1,128 @@
+/* ===== TIMELINE GRAPH COMPONENT ===== */
+
+.timeline-graph {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.timeline-graph__icon {
+  margin-right: var(--spacing-sm);
+}
+
+/* === Indicator Toggles === */
+.timeline-graph__toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.toggle-btn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+  padding: 4px 8px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.toggle-btn:hover {
+  border-color: var(--toggle-color, var(--neon-cyan));
+  color: var(--toggle-color, var(--neon-cyan));
+}
+
+.toggle-btn--active {
+  background: color-mix(in srgb, var(--toggle-color, var(--neon-cyan)) 20%, transparent);
+  color: var(--toggle-color, var(--neon-cyan));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--toggle-color, var(--neon-cyan)) 50%, transparent);
+}
+
+/* === Chart Container === */
+.timeline-graph__chart {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  padding: var(--spacing-sm);
+  position: relative;
+}
+
+.timeline-graph__chart::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.05) 2px,
+    rgba(0, 0, 0, 0.05) 4px
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* === Custom Tooltip === */
+.timeline-tooltip {
+  background: var(--bg-panel);
+  border: 2px solid var(--border-color);
+  padding: var(--spacing-sm);
+  font-family: 'Press Start 2P', monospace;
+}
+
+.timeline-tooltip__year {
+  font-size: var(--font-xs);
+  color: var(--neon-cyan);
+  margin: 0 0 var(--spacing-xs) 0;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.timeline-tooltip__item {
+  font-size: 7px;
+  margin: 2px 0;
+}
+
+/* === Info Footer === */
+.timeline-graph__info {
+  text-align: center;
+  padding: var(--spacing-xs);
+}
+
+.info-text {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
+
+/* === Recharts Overrides === */
+.recharts-cartesian-axis-tick-value {
+  fill: var(--text-muted) !important;
+}
+
+.recharts-legend-item-text {
+  color: var(--text-secondary) !important;
+}
+
+.recharts-default-legend {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .timeline-graph__toggles {
+    justify-content: center;
+  }
+  
+  .toggle-btn {
+    font-size: 5px;
+    padding: 3px 6px;
+  }
+}
+

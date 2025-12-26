@@ -1,0 +1,78 @@
+/* ===== VEGAN SIMULATOR - CSS VARIABLES ===== */
+/* Retro CRT Monitor Aesthetic */
+
+:root {
+  /* === Dark Background Colors === */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-panel: #1a1a25;
+  --bg-panel-hover: #22222f;
+  
+  /* === Neon Accent Colors === */
+  --neon-green: #39ff14;
+  --neon-cyan: #00ffff;
+  --neon-pink: #ff00ff;
+  --neon-yellow: #ffff00;
+  --neon-orange: #ff6600;
+  --neon-red: #ff3333;
+  --neon-blue: #3399ff;
+  
+  /* === Diet Type Colors === */
+  --color-vegan: #39ff14;
+  --color-vegetarian: #7fff00;
+  --color-pescatarian: #00bfff;
+  --color-mixed: #ffaa00;
+  --color-carnivore: #ff4444;
+  
+  /* === Indicator Colors === */
+  --indicator-co2: #ff6b35;
+  --indicator-land: #8b4513;
+  --indicator-water: #1e90ff;
+  --indicator-health: #ff69b4;
+  --indicator-population: #ffd700;
+  --indicator-biodiversity: #32cd32;
+  --indicator-food: #daa520;
+  
+  /* === Text Colors === */
+  --text-primary: #ffffff;
+  --text-secondary: #aaaaaa;
+  --text-muted: #666666;
+  --text-glow: #39ff14;
+  
+  /* === Border & Effects === */
+  --border-color: #333344;
+  --border-glow: #39ff1466;
+  --scanline-color: rgba(0, 0, 0, 0.15);
+  
+  /* === Shadows & Glows === */
+  --glow-green: 0 0 10px #39ff14, 0 0 20px #39ff1466;
+  --glow-cyan: 0 0 10px #00ffff, 0 0 20px #00ffff66;
+  --glow-text: 0 0 5px currentColor;
+  
+  /* === Spacing === */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  
+  /* === Border Radius (Pixel Style) === */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  
+  /* === Transitions === */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* === Font Sizes (Pixel Scale) === */
+  --font-xs: 8px;
+  --font-sm: 10px;
+  --font-md: 12px;
+  --font-lg: 16px;
+  --font-xl: 20px;
+  --font-xxl: 28px;
+  --font-huge: 48px;
+}
+
